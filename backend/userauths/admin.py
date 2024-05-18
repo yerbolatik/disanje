@@ -14,3 +14,4 @@ class ProfieAdmin(admin.ModelAdmin):
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Profile, ProfieAdmin)
+
