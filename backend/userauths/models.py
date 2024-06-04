@@ -20,7 +20,7 @@ class User(AbstractUser):
     def save(self, *args, **kwargs):
         email_username, mobile = self.email.split('@')
         if self.full_name == '' or self.full_name == None:
-            self.full_name = email_username
+            self.full_name = self.email
         if self.username == '' or self.username == None:
             self.username = email_username
 
@@ -50,8 +50,6 @@ class Profile(models.Model):
 
     def save(self, *args, **kwargs):
         if self.full_name == '' or self.full_name == None:
-            self.full_name = self.user.full_name
-        if self.username == '' or self.username == None:
             self.full_name = self.user.full_name
 
         super(Profile, self).save(*args, **kwargs)
